@@ -1,0 +1,30 @@
+opam-version: "2.0"
+maintainer: "martin@mjambon.com"
+authors: ["Martin Jambon"]
+homepage: "https://github.com/mjambon/uniformization"
+bug-reports: "https://github.com/mjambon/uniformization/issues"
+dev-repo: "git+https://github.com/mjambon/uniformization.git"
+license: "BSD-3-Clause"
+
+build: [
+  ["dune" "build" "-p" name "-j" jobs]
+]
+
+depends: [
+  "alcotest"
+  "cmdliner"
+  "dune" {>= "2.1"}
+  "ocaml"
+]
+
+synopsis: "Show dependency graph of a multi-component dune project"
+
+description: """
+This library implements dynamic signal uniformization. It transforms an
+input signal of unknown distribution into a signal that is uniformly
+distributed.
+"""
+
+url {
+  src: "git+https://github.com/mjambon/uniformization"
+}

@@ -1,0 +1,8 @@
+(executable
+  (public_name uniformize)
+  (name main)
+  (libraries
+    uniformize
+    cmdliner
+  )
+)
