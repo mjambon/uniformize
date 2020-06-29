@@ -3,9 +3,7 @@ build:
 	dune build
 
 test:
-	ln -sf ../_build/install/default/bin/uniformize test/
 	dune exec src/test/test.exe
-	$(MAKE) -C test
 
 .PHONY: install
 install:
