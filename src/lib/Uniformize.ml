@@ -363,7 +363,7 @@ let test_interpolate () =
   assert (f 0. 10 0. 20 (-1.) =~ 10.);
   assert (f 0. 10 0. 20 1. =~ 20.)
 
-let rank t x =
+let normalize t x =
   match t.num_rounds with
   | 0 ->
       (* The bins haven't been initialized yet, fall back to scanning the
@@ -427,16 +427,16 @@ let rank t x =
 
 let map t x =
   add t x;
-  rank t x
+  normalize t x
 
 let string_of_list l =
    l |> List.map string_of_float |> String.concat " "
 
-let test_rank () =
+let test_normalize () =
   let f n samples query =
     let t = create ~num_bins:n () in
     List.iter (add t) samples;
-    let r = rank t query in
+    let r = normalize t query in
     printf "n=%i [%s] query=%g -> rank=%g\n"
       n (string_of_list samples) query r;
     r
@@ -499,5 +499,5 @@ let tests = [
   "find_sup", test_find_sup;
   "find_rank_in_buffer", test_find_rank_in_buffer;
   "interpolate", test_interpolate;
-  "rank", test_rank;
+  "normalize", test_normalize;
 ]

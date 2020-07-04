@@ -60,7 +60,7 @@ val create : ?ema_alpha:float -> ?num_bins:int -> unit -> t
 val get_num_bins : t -> int
 
 (**
-   Add a sample to the tracker.
+   Add a sample to the tracker. This is a write-only operation.
 *)
 val add : t -> float -> unit
 
@@ -69,11 +69,15 @@ val add : t -> float -> unit
    Half of the samples matching the lowest bin will result in exactly [0.]
    and half of the samples matching the greatest bin will result in exactly
    [1.].
+
+   This is a read-only operation.
 *)
-val rank : t -> float -> float
+val normalize : t -> float -> float
 
 (**
    Add an input sample to the tracker and return its estimated rank.
+
+   This the read-write operation that combines [add] and [normalize].
 *)
 val map : t -> float -> float
 
